@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<<<<<<< HEAD
 
 <head th:fragment="head(titulo)">
     <meta charset="UTF-8">
@@ -45,6 +46,36 @@
 <div th:fragment="mensagens">
     <div class="mensagem sucesso" th:if="${sucesso}" th:text="${sucesso}"></div>
     <div class="mensagem erro" th:if="${erro}" th:text="${erro}"></div>
+=======
+<head th:fragment="head(titulo)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${titulo} + ' · Loja Grupo H'">Loja</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+
+<header th:fragment="cabecalho" class="cabecalho">
+    <div class="container cabecalho-conteudo">
+        <a th:href="@{/produtos}" class="marca">Loja Grupo H</a>
+        <nav>
+            <a th:href="@{/produtos}">Catálogo</a>
+            <a th:href="@{/produtos/novo}">Novo produto</a>
+            <a th:href="@{/bucket}">Bucket</a>
+        </nav>
+    </div>
+</header>
+
+<div th:fragment="mensagens">
+    <div class="alerta sucesso" th:if="${sucesso}" th:text="${sucesso}"></div>
+    <div class="alerta erro" th:if="${erro}" th:text="${erro}"></div>
+</div>
+
+<div th:fragment="upload(modo)" class="upload" th:attr="data-upload=${modo}">
+    <input type="file" name="arquivos" accept="image/*" multiple>
+    <p class="dica">Selecione uma ou mais imagens e marque qual será a principal (capa).</p>
+    <div class="previa"></div>
+>>>>>>> 7fdba2a (feat: atualiza interface, dados iniciais e documentação)
 </div>
 
 </body>
