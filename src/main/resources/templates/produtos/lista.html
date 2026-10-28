@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Catálogo')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: cabecalho}"></header>
+
+<main class="container">
+    <div th:replace="~{fragmentos/layout :: mensagens}"></div>
+
+    <div class="titulo-pagina">
+        <h1>Catálogo de produtos</h1>
+        <a th:href="@{/produtos/novo}" class="botao">+ Novo produto</a>
+    </div>
+
+    <p class="vazio" th:if="${#lists.isEmpty(produtos)}">Nenhum produto cadastrado ainda.</p>
+
+    <div class="grade">
+        <a th:each="produto : ${produtos}" th:href="@{/produtos/{id}(id=${produto.id})}" class="cartao">
+            <div class="miniatura">
+                <img th:if="${produto.imagemPrincipal != null}"
+                     th:src="${produto.imagemPrincipal.urlPublica}"
+                     th:alt="${produto.nome}" loading="lazy">
+                <span th:unless="${produto.imagemPrincipal != null}" class="sem-imagem">Sem imagem</span>
+            </div>
+            <div class="cartao-corpo">
+                <h2 th:text="${produto.nome}">Produto</h2>
+                <p class="descricao" th:text="${produto.descricao}">Descrição</p>
+                <div class="cartao-rodape">
+                    <strong class="preco" th:text="'R$ ' + ${#numbers.formatDecimal(produto.preco, 1, 'POINT', 2, 'COMMA')}">R$ 0,00</strong>
+                    <span class="contador" th:text="${#lists.size(produto.imagens)} + ' foto(s)'">0 fotos</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</main>
+</body>
+</html>
