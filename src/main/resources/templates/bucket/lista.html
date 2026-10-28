@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/layout :: head('Bucket')}"></head>
+<body>
+<header th:replace="~{fragmentos/layout :: cabecalho}"></header>
+
+<main class="container">
+    <div th:replace="~{fragmentos/layout :: mensagens}"></div>
+
+    <div class="titulo-pagina">
+        <h1>Objetos em <code th:text="${nomeBucket}">bucket</code></h1>
+    </div>
+
+    <form method="get" th:action="@{/bucket}" class="filtro">
+        <input type="text" name="prefixo" th:value="${prefixo}" placeholder="Filtrar por prefixo (ex.: produtos/1/)">
+        <button type="submit" class="botao secundario">Filtrar</button>
+    </form>
+
+    <p class="vazio" th:if="${#lists.isEmpty(objetos)}">Nenhum objeto encontrado.</p>
+
+    <div class="tabela-rolagem" th:unless="${#lists.isEmpty(objetos)}">
+        <table class="tabela">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Objeto</th>
+                <th>Tipo</th>
+                <th>Tamanho</th>
+                <th>Atualizado</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="objeto : ${objetos}">
+                <td>
+                    <img th:if="${objeto.contentType != null and #strings.startsWith(objeto.contentType, 'image/')}"
+                         th:src="${objeto.urlPublica}" class="mini" loading="lazy" alt="">
+                </td>
+                <td class="nome-objeto" th:text="${objeto.nome}"></td>
+                <td th:text="${objeto.contentType}"></td>
+                <td th:text="${objeto.tamanho != null} ? ${#numbers.formatDecimal(objeto.tamanho / 1024.0, 1, 'POINT', 1, 'COMMA')} + ' KB' : '-'"></td>
+                <td th:text="${objeto.atualizadoEm != null} ? ${#temporals.format(objeto.atualizadoEm, 'dd/MM/yyyy HH:mm')} : '-'"></td>
+                <td class="acoes-linha">
+                    <a th:href="@{/bucket/download(objeto=${objeto.nome})}" class="link">Baixar</a>
+                    <a th:href="${objeto.urlPublica}" target="_blank" rel="noopener" class="link">Abrir</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>
