@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "EcommerceApplication",
+            "request": "launch",
+            "mainClass": "br.com.fatec.ecommerce.EcommerceApplication",
+            "projectName": "ecommerce",
+            "env": {
+                "GOOGLE_APPLICATION_CREDENTIALS": "${workspaceFolder}/credenciais/chave-sa.json",
+                "DB_USUARIO": "postgres",
+                "DB_SENHA": "postgres"
+            }
+        },
+        {
+            "type": "java",
+            "name": "EcommerceApplication (popular dados)",
+            "request": "launch",
+            "mainClass": "br.com.fatec.ecommerce.EcommerceApplication",
+            "projectName": "ecommerce",
+            "args": "--app.seed.ativo=true",
+            "env": {
+                "GOOGLE_APPLICATION_CREDENTIALS": "${workspaceFolder}/credenciais/chave-sa.json",
+                "DB_USUARIO": "postgres",
+                "DB_SENHA": "postgres"
+            }
+        }
+    ]
+}
