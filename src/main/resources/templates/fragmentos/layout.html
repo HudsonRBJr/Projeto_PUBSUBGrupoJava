@@ -1,63 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
-<<<<<<< HEAD
 
 <head th:fragment="head(titulo)">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title th:text="${titulo} + ' | E-commerce'">E-commerce</title>
-    <style>
-        * { box-sizing: border-box; }
-        body { margin: 0; font-family: system-ui, sans-serif; background: #f5f6f8; color: #222; }
-        .cabecalho { background: #1f3a5f; color: #fff; padding: 12px 16px; }
-        .cabecalho nav { display: flex; gap: 16px; align-items: center; max-width: 1100px; margin: 0 auto; }
-        .cabecalho a { color: #fff; text-decoration: none; }
-        .cabecalho .marca { font-weight: 700; margin-right: auto; }
-        .container { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
-        .titulo-pagina h1 { font-size: 1.5rem; }
-        .mensagem { padding: 10px 14px; border-radius: 6px; margin-bottom: 16px; }
-        .mensagem.sucesso { background: #e3f6e8; color: #1d6b34; }
-        .mensagem.erro { background: #fde8e8; color: #9b1c1c; }
-        .filtro { display: flex; gap: 8px; margin-bottom: 16px; }
-        .filtro input { flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 6px; }
-        .botao { padding: 8px 14px; border: 0; border-radius: 6px; background: #1f3a5f; color: #fff; cursor: pointer; }
-        .botao.secundario { background: #e1e5eb; color: #222; }
-        .vazio { color: #666; }
-        .tabela-rolagem { overflow-x: auto; }
-        .tabela { width: 100%; border-collapse: collapse; background: #fff; }
-        .tabela th, .tabela td { padding: 8px; border-bottom: 1px solid #eee; text-align: left; vertical-align: middle; }
-        .mini { width: 48px; height: 48px; object-fit: cover; border-radius: 4px; }
-        .nome-objeto { word-break: break-all; }
-        .acoes-linha { white-space: nowrap; }
-        .link { color: #1f5fa8; margin-right: 8px; }
-    </style>
-</head>
-
-<body>
-
-<header th:fragment="cabecalho" class="cabecalho">
-    <nav>
-        <a th:href="@{/}" class="marca">E-commerce</a>
-        <a th:href="@{/produtos}">Produtos</a>
-        <a th:href="@{/bucket}">Bucket</a>
-    </nav>
-</header>
-
-<div th:fragment="mensagens">
-    <div class="mensagem sucesso" th:if="${sucesso}" th:text="${sucesso}"></div>
-    <div class="mensagem erro" th:if="${erro}" th:text="${erro}"></div>
-=======
-<head th:fragment="head(titulo)">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title th:text="${titulo} + ' · Loja Grupo H'">Loja</title>
+    <title th:text="${titulo} + ' | Loja Grupo H'">Loja Grupo H</title>
     <link rel="stylesheet" th:href="@{/css/estilo.css}">
 </head>
+
 <body>
 
 <header th:fragment="cabecalho" class="cabecalho">
     <div class="container cabecalho-conteudo">
         <a th:href="@{/produtos}" class="marca">Loja Grupo H</a>
+
         <nav>
             <a th:href="@{/produtos}">Catálogo</a>
             <a th:href="@{/produtos/novo}">Novo produto</a>
@@ -67,15 +24,32 @@
 </header>
 
 <div th:fragment="mensagens">
-    <div class="alerta sucesso" th:if="${sucesso}" th:text="${sucesso}"></div>
-    <div class="alerta erro" th:if="${erro}" th:text="${erro}"></div>
+    <div class="alerta sucesso"
+         th:if="${sucesso}"
+         th:text="${sucesso}">
+    </div>
+
+    <div class="alerta erro"
+         th:if="${erro}"
+         th:text="${erro}">
+    </div>
 </div>
 
-<div th:fragment="upload(modo)" class="upload" th:attr="data-upload=${modo}">
-    <input type="file" name="arquivos" accept="image/*" multiple>
-    <p class="dica">Selecione uma ou mais imagens e marque qual será a principal (capa).</p>
+<div th:fragment="upload(modo)"
+     class="upload"
+     th:attr="data-upload=${modo}">
+
+    <input type="file"
+           name="arquivos"
+           accept="image/*"
+           multiple>
+
+    <p class="dica">
+        Selecione uma ou mais imagens e marque qual será
+        a principal (capa).
+    </p>
+
     <div class="previa"></div>
->>>>>>> 7fdba2a (feat: atualiza interface, dados iniciais e documentação)
 </div>
 
 </body>
