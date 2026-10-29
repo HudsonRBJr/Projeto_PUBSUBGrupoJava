@@ -1,4 +1,5 @@
 # Loja Grupo H — Catálogo com imagens no Google Cloud Storage
+ALUNOS: Hudson Ribeiro Barbara Junior, Maria Clara Costa Cardoso, Gustavo Schizari, Eduardo Gibertoni Camillo
 
 Aplicação Spring Boot (Java 21) do tema **ecommerce**:
 
